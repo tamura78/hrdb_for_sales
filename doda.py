@@ -154,9 +154,10 @@ for i in range(2,total_page_num):
 
 
 url_list_002 = list()
-a=1#変更点
+a=100
+joblib_num = total_page_num//a + 1
 
-for n in tqdm(range(3)):#変更点
+for n in tqdm(range(0, joblib_num)):
     try:
         resultList = joblib.Parallel(n_jobs=12, verbose=3)( [joblib.delayed(joblib_get_url)(i) for i in range(n*a,(n+1)*a) ])
         url_list_002.extend(resultList)
@@ -177,9 +178,9 @@ for i in flatten_url_list_002:
 
 
 url_list_004 = list()
-a=1#変更点
+a=100
 
-for n in tqdm(range(3)):#(range(len(url_list_003)))#変更点
+for n in tqdm(range(len(url_list_003))):
     try:
         resultList = joblib.Parallel(n_jobs=12, verbose=3)( [joblib.delayed(joblib_get_url_second)(i) for i in range(n*a,(n+1)*a) ])
         url_list_004.extend(resultList)
@@ -198,12 +199,12 @@ for i in flatten_url_list_004:
   if i not in url_list_004:
       url_list_005.append(i)
 
-b=1#変更点
-#joblib_num=len(url_list_004)//b+1
+b=100
+joblib_num=len(url_list_004)//b+1
 
 all_list=list()
 
-for n in tqdm(range(3)):#(range(0,joblib_num))#変更点
+for n in tqdm(range(0,joblib_num)):#変更点
     try:
         resultList = joblib.Parallel(n_jobs=12, verbose=3)( [joblib.delayed(joblib_get_data)(i) for i in range(n*b,(n+1)*b) ])
         #resultList = joblib.Parallel(n_jobs=12, verbose=3)( [joblib.delayed(joblib_get_data)(i) ])
