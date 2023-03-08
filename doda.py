@@ -228,8 +228,8 @@ doda_df.to_csv("doda_data.csv",encoding="utf-8-sig")
 
 print('データの格納')
 bucket_name = 'monthly-scraping'
-#s3_key = 'monthly_data/{}年/{}月/doda.csv'.format(year,month)
-s3_key = 'monthly_data/2023年/3月/doda.csv'
+s3_key = 'monthly_data/{}年/{}月/doda.csv'.format(year,month)
+#s3_key = 'monthly_data/2023年/3月/doda.csv'
 s3 = boto3.resource('s3') 
 s3_obj = s3.Object(bucket_name,s3_key)
 s3_obj.put(Body=doda_df.to_csv(None).encode('utf_8_sig'))
