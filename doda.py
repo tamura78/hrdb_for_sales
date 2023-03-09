@@ -226,6 +226,7 @@ print(doda_df)
 
 doda_df.to_csv("doda_data.csv",encoding="utf-8-sig")
 
+
 print('データの格納')
 bucket_name = 'monthly-scraping'
 s3_key = 'monthly_data/{}年/{}月/doda.csv'.format(year,month)
